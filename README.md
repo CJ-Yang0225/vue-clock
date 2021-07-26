@@ -2,6 +2,8 @@
 
 Vue 3 practice app for the first time :)
 
+[DEMO](https://vue-clock-psi.vercel.app/)
+
 ---
 
 This template should help get you started developing with Vue 3 and Typescript in Vite.
