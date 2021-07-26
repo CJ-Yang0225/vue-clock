@@ -1,17 +1,27 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+  <Clock :time="state.time" />
 </template>
 
 <script lang="ts">
   import { defineComponent, reactive, onMounted } from "vue";
-  import HelloWorld from "./components/HelloWorld.vue";
+  import Clock from "./components/Clock.vue";
 
   export default defineComponent({
     name: "App",
     components: {
-      HelloWorld,
-    }
+      Clock,
+    },
+    setup() {
+      const state = reactive({ time: new Date() });
+
+      onMounted(() => {
+        setInterval(() => {
+          state.time = new Date();
+        }, 1000);
+      });
+
+      return { state };
+    },
   });
 </script>
 
@@ -25,11 +35,10 @@
   }
 
   #app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #091921;
   }
 </style>
